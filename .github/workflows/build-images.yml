@@ -1,0 +1,54 @@
+name: Build and Publish MyJavaBotQUARKUS onto Docker Hub
+
+on:
+  push:
+    branches: [ "main", "*" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-push-jvm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Extract Metadata (Version & Short SHA)
+        id: meta
+        run: |
+          VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "combined=${VERSION}-${SHORT_SHA}" >> $GITHUB_OUTPUT
+
+      - name: Run Unit Tests
+        run: ./mvnw clean test
+
+      - name: Build Package (JVM)
+        run: ./mvnw package -DskipTests
+
+      - name: Log in to Docker Hub
+        if: github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push JVM Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: src/main/docker/Dockerfile.jvm
+          # Nur pushen, wenn wir auf dem main-Branch sind, da der Login auch nur dort passiert
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-${{ steps.meta.outputs.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-${{ steps.meta.outputs.combined }}
