@@ -1,0 +1,95 @@
+{
+  "reflection": [
+    {
+      "type": "net.dv8tion.jda.api.JDA"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.Guild[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.Member[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.Role[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.ScheduledEvent[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.SoundboardSound[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.User[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.channel.Channel"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.channel.attribute.IGuildChannelContainer"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.channel.forums.ForumTag[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.emoji.RichCustomEmoji[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.entities.sticker.GuildSticker[]"
+    },
+    {
+      "type": "net.dv8tion.jda.api.hooks.EventListener"
+    },
+    {
+      "type": "net.dv8tion.jda.api.hooks.ListenerAdapter",
+      "methods": [
+        {
+          "name": "onGatewayPing",
+          "parameterTypes": [
+            "net.dv8tion.jda.api.events.GatewayPingEvent"
+          ]
+        },
+        {
+          "name": "onGenericSession",
+          "parameterTypes": [
+            "net.dv8tion.jda.api.events.session.GenericSessionEvent"
+          ]
+        },
+        {
+          "name": "onHttpRequest",
+          "parameterTypes": [
+            "net.dv8tion.jda.api.events.http.HttpRequestEvent"
+          ]
+        },
+        {
+          "name": "onShutdown",
+          "parameterTypes": [
+            "net.dv8tion.jda.api.events.session.ShutdownEvent"
+          ]
+        },
+        {
+          "name": "onStatusChange",
+          "parameterTypes": [
+            "net.dv8tion.jda.api.events.StatusChangeEvent"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "net.dv8tion.jda.api.managers.AudioManager[]"
+    },
+    {
+      "type": "net.dv8tion.jda.internal.entities.GuildVoiceStateImpl[]"
+    },
+    {
+      "type": "net.dv8tion.jda.internal.utils.FallbackLogger",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    }
+  ]
+}
