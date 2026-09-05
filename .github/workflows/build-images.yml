@@ -49,9 +49,9 @@ jobs:
           # Nur pushen, wenn wir auf dem main-Branch sind, da der Login auch nur dort passiert
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:jvm-latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:jvm-${{ steps.meta.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:jvm-${{ steps.meta.outputs.combined }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-${{ steps.meta.outputs.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:jvm-${{ steps.meta.outputs.combined }}
 
   build-and-push-native:
     runs-on: ubuntu-latest
@@ -93,6 +93,6 @@ jobs:
           file: src/main/docker/Dockerfile.native
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:native-latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:native-${{ steps.meta.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/dein-quarkus-projekt:native-${{ steps.meta.outputs.combined }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:native-latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:native-${{ steps.meta.outputs.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-java-bot:native-${{ steps.meta.outputs.combined }}
