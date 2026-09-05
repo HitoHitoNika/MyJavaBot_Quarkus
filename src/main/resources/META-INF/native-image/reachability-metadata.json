@@ -93,32 +93,8 @@
     },
     {
       "type": "net.dv8tion.jda.api.hooks.ListenerAdapter",
-      "methods": [
-        {
-          "name": "onSlashCommandInteraction",
-          "parameterTypes": [
-            "net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent"
-          ]
-        },
-        {
-          "name": "onException",
-          "parameterTypes": [
-            "net.dv8tion.jda.api.events.ExceptionEvent"
-          ]
-        },
-        {
-        "name": "onGenericCommandInteraction",
-        "parameterTypes": [
-            "net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent"
-          ]
-        },
-        {
-          "name": "onGenericCommandInteraction",
-          "parameterTypes": [
-            "net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent"
-          ]
-        }
-      ]
+      "allDeclaredMethods": true,
+      "allPublicMethods": true
     }
   ]
 }
